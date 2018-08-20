@@ -7,11 +7,11 @@ except ImportError:
 try:
     # Django 2.1+
     from django.contrib.auth.views import LoginView as auth_login
-    from django.contrib.auth import LogoutView as logout_request
+    from django.contrib.auth.views import LogoutView as logout_request
 except ImportError:
     # fallback
     from django.contrib.auth.views import login as auth_login
-    from django.contrib.auth import logout as logout_request
+    from django.contrib.auth.views import logout as logout_request
 
 from django.http import HttpResponse, HttpResponseNotAllowed
 from django.contrib.auth.decorators import permission_required
