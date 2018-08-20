@@ -4,13 +4,20 @@ except ImportError:
     # python 2.5 fallback
     from django.utils import simplejson as json
 
+try:
+    # Django 2.1+
+    from django.contrib.auth.views import LoginView as auth_login
+    from django.contrib.auth import LogoutView as logout_request
+except ImportError:
+    # fallback
+    from django.contrib.auth.views import login as auth_login
+    from django.contrib.auth import logout as logout_request
+
 from django.http import HttpResponse, HttpResponseNotAllowed
 from django.contrib.auth.decorators import permission_required
-from django.contrib.auth import logout as logout_request
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.loader import get_template
 from django.conf import settings
-from django.contrib.auth.views import login as auth_login
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.cache import never_cache
 from django.core.exceptions import PermissionDenied
