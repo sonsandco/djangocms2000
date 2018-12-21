@@ -6,8 +6,10 @@ except ImportError:
 
 try:
     # Django 2.1+
-    from django.contrib.auth.views import LoginView as auth_login
-    from django.contrib.auth.views import LogoutView as logout_request
+    from django.contrib.auth.views import LoginView
+    auth_login = LoginView.as_view()
+    from django.contrib.auth.views import LogoutView
+    logout_request = LogoutView.as_view()
 except ImportError:
     # fallback
     from django.contrib.auth.views import login as auth_login
