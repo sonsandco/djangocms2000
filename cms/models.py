@@ -103,7 +103,13 @@ class Video(ContentModel):
     def type(self):
         return 'video/%s' % get_file_type(self.source.url)
 
-    poster = models.ImageField(upload_to=cms_settings.UPLOAD_PATH, blank=True)
+    poster = models.ImageField(
+        upload_to=cms_settings.UPLOAD_PATH, blank=True,
+        height_field='poster_height', width_field='poster_width')
+    poster_height = models.PositiveIntegerField(
+        null=True, blank=True, editable=False)
+    poster_width = models.PositiveIntegerField(
+        null=True, blank=True, editable=False)
     description = models.CharField(max_length=255, blank=True)
     loop = models.BooleanField(default=False)
 
