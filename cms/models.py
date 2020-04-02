@@ -8,8 +8,9 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.cache import cache
 from django.core.exceptions import ValidationError
 from django.utils.safestring import mark_safe
-from django.utils.encoding import python_2_unicode_compatible
 from django.db.models.signals import post_save
+
+from six import python_2_unicode_compatible
 
 from . import settings as cms_settings
 from .utils import generate_cache_key, ctype_from_key, key_from_obj

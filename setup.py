@@ -18,7 +18,7 @@ setup(
     packages=find_packages(exclude=('tests', )),
     zip_safe=False,
     platforms='any',
-    install_requires=['Django>=1.4', ],
+    install_requires=['Django>=1.4', 'six'],
     include_package_data=True,
     package_data={},
     classifiers=[
